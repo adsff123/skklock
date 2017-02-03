@@ -1,0 +1,46 @@
+<label class="page1">Country</label>
+<div class="tooltips" title="Please select the country that the customer will primarily be served from">
+          <select id="country" name="college" placeholder="Phantasyland">
+        <option></option>
+        <option>경영대학</option>
+        <option>경제대학</option>
+        <option>문과대학</option>
+        <option>사범대학</option>
+        <option>사회과학대학</option>
+        <option>예술대학</option>
+        <option>법과대학</option>
+        <option>유학대학</option>
+      </select>
+</div>
+<br />
+<br />
+<label class="page1">Location</label>
+<div class="tooltips" title="Please select the city that the customer is primarily to be served from.">
+    <select id="location" placeholder="Anycity"></select>
+</div>
+
+
+<script>
+
+  jQuery(function($) {
+    var locations = {
+        '경영대학': ['글로벌경영학과', '경영학과'],
+        '경제대학': ['글로벌경제학과', '경제학과', '통계학과'],
+        '문과대학': ['국어국문학과', '영어영문학과', '프랑스어문학과'],
+        '사범대학': ['교육학과', '한문교육과', '수학교육과', '컴퓨터교육과'],
+        '사회과학대학': ['정치외교학과', '글로벌리더학부', '행정학과'],
+        '예술대학': ['미술학과', '디자인학과', '무용학과',],
+    }
+    
+    var $locations = $('#location');
+    $('#country').change(function () {
+        var country = $(this).val(), lcns = locations[country] || [];
+        
+        var html = $.map(lcns, function(lcn){
+            return '<option value="' + lcn + '">' + lcn + '</option>'
+        }).join('');
+        $locations.html(html)
+    });
+});
+
+</script>

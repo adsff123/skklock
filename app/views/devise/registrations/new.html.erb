@@ -1,0 +1,88 @@
+
+<div class = "container" style="margin-top: 50px">
+  
+  <h2>Sign up</h2>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+  
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      
+    </div>
+    
+    <div class='field'>
+      이름<br />
+      <%= f.text_field :username%>
+    </div>
+    
+    <div class='field'>
+      학번<br />
+      <%= f.text_field :usernumber%>
+    </div>
+    
+    <div class="field">
+      학부<br />
+      <% @college = ['경영대학','경제대학','문과대학','법과대학','사범대학','사회과학대학','유학대학','예술대학'] %>
+      <%= f.select :college, @college, {}, :id => 'country' %>
+    </div>
+    
+    <div class='field'>
+      학과<br />
+      <%= f.select :major, {}, {}, :id => 'location' %>
+    </div>
+    
+    <hr>
+    <div class="actions">
+      <%= f.submit "Sign up" %>
+
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>
+
+
+<script>
+
+  jQuery(function($) {
+    var locations = {
+        '경영대학': ['글로벌경영학과', '경영학과'],
+        '경제대학': ['글로벌경제학과', '경제학과', '통계학과'],
+        '문과대학': ['국어국문학과', '영어영문학과', '프랑스어문학과', '중어중문학과', '독어독문학과', '러시아어문학과', '한문학과', '사학과', '철학과', '문헌정보학과'],
+        '법과대학': ['법학과'],
+        '사범대학': ['교육학과', '한문교육과', '수학교육과', '컴퓨터교육과'],
+        '사회과학대학': ['글로벌리더학부', '행정학과', '정치외교학과', '신문방송학과','사회학과', '사회복지학과', '심리학과', '소비자가족학과', '아동청소년학과'],
+        '유학대학': ['유학동양학과'],
+        '예술대학': ['미술학과', '디자인학과', '무용학과', '영상학과', '연기예술학과', '의상학과'],
+    }
+    
+    var $locations = $('#location');
+    $('#country').change(function () {
+        var country = $(this).val(), lcns = locations[country] || [];
+        
+        var html = $.map(lcns, function(lcn){
+            return '<option value="' + lcn + '">' + lcn + '</option>'
+        }).join('');
+        $locations.html(html)
+    });
+});
+
+</script>
+
+
+
+       

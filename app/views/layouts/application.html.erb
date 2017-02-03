@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  
+  <!--네비게이션 바-->
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  
+  <style>
+  	
+  	.navbar {
+  		width : 80%;
+  		margin: auto;
+  		box-shadow: -1px 3px 0px #C4C5C6;
+  		border: 2px solid #44C794;
+  	}
+  	
+  	.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #44C794;
+		}
+		
+		.navbar li {
+		    float: right;
+		}
+		
+		.navbar li a {
+		    display: block;
+		    color: white;
+		    text-align: center;
+		    padding: 14px 16px;
+		    text-decoration: none;
+		}
+		
+		/* Change the link color to #111 (black) on hover */
+		.navbar li a:hover {
+		    background-color: #111;
+		}
+  </style>
+  
+  
+  
+</head>
+<body>
+	
+	<div class = "navbar">
+		<ul>
+			<% if current_user %>
+					<li class = "logo_img" style = "float:left">
+						<a href="/users/sign_in">로고</a>
+					</li>
+				  <li>
+						<a href="/home/user_page"><span>공지사항</span></a>
+					</li>
+											
+					<li>
+						<a href="/home/about"><span>내 사물함</span></a>
+					</li>
+											
+					<li>
+						<a href="/home/about"><span>ABOUT</span></a>
+					</li>
+					
+					<li>
+						<a href="/users/sign_out"><span>로그아웃</span></a>
+					</li>
+					<% if (current_user.has_role? :admin) %> 
+					  <li>
+							<a href="/home/manage"><span>관리자</span></a>
+						</li>
+					<% end %>
+			<% else %>
+					<li class = "logo_img" style = "float:left">
+						<a href="/users/sign_in">로고</a>
+					</li>
+					<li>
+						<a href="/home/about"><span>ABOUT</span></a>
+					</li>
+				  <li>
+						<a href="/users/sign_up"><span>회원가입</span></a>
+					</li>
+			<% end %>
+		</ul>
+	</div>
+	
+	<!--<div class="top-header">-->
+	<!--				<div class="navbar navbar-default htlfndr-blue-hover-nav">-->
+	<!--					<div class="container">-->
+							<!-- Brand and toggle get grouped for better mobile display -->
+	<!--						<div class="navbar-header">-->
+	<!--							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#htlfndr-first-nav">-->
+	<!--								<span class="sr-only">Toggle navigation</span>-->
+	<!--								<span class="icon-bar"></span>-->
+	<!--								<span class="icon-bar"></span>-->
+	<!--								<span class="icon-bar"></span>-->
+	<!--							</button>-->
+	<!--							<a class="htlfndr-logo navbar-brand" href="/home/index">-->
+	<!--								<img src="/assets/Logo.png" alt="Logo" style="width:9%;" />-->
+	<!--							</a>-->
+	<!--						</div><!-- .navbar-header -->
+							<!-- Collect the nav links, forms, and other content for toggling -->
+	<!--						<div class="collapse navbar-collapse navbar-right" id="htlfndr-first-nav">-->
+								<!-- List with sing up/sing in links -->
+	<!--							<ul class="nav navbar-nav">-->
+	<!--								</% if current_user %> <!--로그인 한경우 -->
+										
+	<!--									<li id="notice-link">-->
+	<!--										<a href="/home/user_page">-->
+	<!--											<span onclick="DoNav('/user_page')">공지사항</span></a>-->
+	<!--									</li>-->
+										
+	<!--									<li id="mylcok-link">-->
+	<!--										<a href="/home/about">-->
+	<!--											<span onclick="DoNav('/about')">내 사물함</span></a>-->
+	<!--									</li>-->
+										
+	<!--									<li id="about-link">-->
+	<!--										<a href="/home/about">-->
+	<!--											<span onclick="DoNav('/about')">ABOUT</span></a>-->
+	<!--									</li>-->
+				
+	<!--									<li id="signout-link">-->
+	<!--										<a href="/users/sign_out">-->
+	<!--											<span onclick="DoNav('/users/sign_out')">로그아웃</span></a>-->
+	<!--									</li>-->
+										
+	<!--								</% else %> <!--로그인 안한경우 -->
+										
+	<!--									<li id="about-link">-->
+	<!--										<a href="/home/about">-->
+	<!--											<span onclick="DoNav('/about')">ABOUT</span></a>-->
+	<!--									</li>-->
+										
+	<!--									<li id="singup-link">-->
+	<!--										<a href="/users/sign_up">-->
+	<!--											<span onclick="DoNav('/users/sign_up')">회원가입</span></a>-->
+	<!--									</li>-->
+										
+
+										
+	<!--								</% end %>-->
+	<!--							</ul><!-- .htlfndr-singup-block -->				
+	<!--						</div><!-- .collapse.navbar-collapse -->
+	<!--					</div><!-- .container -->
+	<!--				</div><!-- .navbar.navbar-default.htlfndr-blue-hover-nav-->
+	<!--			</div><!-- .htlfndr-top-header -->
+
+<%= yield %>
+
+</body>
+</html>

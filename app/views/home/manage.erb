@@ -1,0 +1,4 @@
+<% if current_user.nil? %> 
+<% elsif (current_user.has_role? :admin) %> 
+  <h1>관리자 PAGE</h1>
+<% end %>

@@ -1,0 +1,117 @@
+      .container {
+        width: 80%;
+        height: 89vh;
+        margin: auto;
+        background-color:#EEF2F3;
+        overflow: auto;
+      }
+      
+      .main {
+        width: 70%;
+        margin:auto;
+      }
+      
+      .header {
+        margin-top: 50px;
+      }
+      
+      .header p {
+        color: white;
+        text-align: center;
+        padding: 20px;
+        background-color: #44C794;
+        font-size:1.2em;
+      }
+      
+      .sign_in_box {
+        margin-top: 5px;
+        background-color: #FFF;
+        width: 49%;
+        float:left;
+        border-top: 5px solid #44C794;
+        border-radius: 5px;
+        margin-bottom: 30px;
+      }
+      
+      .sign_in_form {
+        width: 80%;
+        margin: auto;
+        margin-top:30px;
+        margin-bottom:30px;
+        color: #464646;
+        
+      }
+      
+      .notice_box {
+        margin-top: 5px;
+        background-color: #FFF;
+        width: 49%;
+        float:right;
+        border-top: 5px solid #44C794;
+        border-radius: 5px;
+        margin-bottom: 30px;
+      }
+      
+      .notice_content {
+        width: 80%;
+        margin: auto;
+        margin-top:30px;
+        margin-bottom:30px;
+      }
+      
+      .notice_content p {
+        color: #464646;
+      }
+      
+      .notice_content ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        color: #464646;
+      }
+      
+      .title {
+        font-size:1.3em;
+        font-weight: bold;
+      }
+      
+      .footer p {
+        width: 80%;
+        margin: auto;
+        background-color: #2E3440;
+        text-align: center;
+        color: #bbb;
+        padding: 10px;
+      }
+      
+      .field {
+        padding: 10px;
+      }
+      
+      .sign_in_field {
+        width: 100%;
+        margin: auto;
+      }
+      
+      .actions {
+        margin-top: 30px;
+        text-align: center;
+      }
+      
+      .btn_sign_in {
+        width: 25%;
+        color: #fff;
+        background-color: #44C794;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #44C794;
+      }
+      
+      .btn_sign_in:hover {
+        width: 25%;
+        color: #44C794;
+        background-color: #fff;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #44C794;
+      }

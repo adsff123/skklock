@@ -1,0 +1,75 @@
+<link rel="stylesheet" type='text/css' href="/assets/sign_in.css"/>
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <!--전체 화면 div-->
+    <div class='container'>
+      <!--하위 div 넓이 조절을 위한 div-->
+      <div class = "main">
+        
+        <!--서비스 안내 div-->
+        <div class = "header">
+          <p>성균관대학교 사물함 온라인신청</p>
+        </div>
+       
+        <!--로그인 div-->
+        <div class = "sign_in_box">
+          <div class = "sign_in_form">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="field">
+                <%= f.label :아이디 %><br />
+                <%= f.email_field :email, :class => "sign_in_field"%>
+              </div>
+            
+              <div class="field">
+                <%= f.label :비밀번호 %><br />
+                <%= f.password_field :password, :class => "sign_in_field" %>
+              </div>
+            
+              <% if devise_mapping.rememberable? -%>
+                <div class="field">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me %>
+                </div>
+              <% end -%>
+            
+              <div class="actions">
+                <%= f.submit "로그인", :class => "btn_sign_in" %>
+              </div>
+            <% end %>
+            <!--회원정보 찾는 link-->
+            <!--</%= render "devise/shared/links" %>-->
+          </div>
+        </div>
+        
+        <!--알림내용 div-->
+        <div class = "notice_box">
+          <div class = "notice_content">
+            <p><span class = "title">사물함 신청 유의사항</span></p>
+            <p>
+            <ul>
+              <li>1. 신청하고자 하는 사물함의 관리자가 지정한 기간에만 사물함 신청이 가능합니다.</li>
+              <li>2. 로그인을 하지 않을 시에는 서비스를 이용할 수 없으므로, 서비스 이용을 위해서는 반드시 회원가입 후 로그인을 해주시기 바랍니다.</li>
+              <li>3. 정상적으로 회원가입을 한 경우에도 학과 관리자의 승인까지 일정 기간이 소요될 수 있습니다.</li>
+              <li>4. 세부적인 운영사항은 각 학과 혹은 단과대학의 관리자가 만든 지침에 따릅니다.</li>
+            </ul>
+            </p>
+            <p><span class = "title">[2017-1학기 사물함 신청 변경사항]</span></p>
+            <ul>
+              <li>1. 현재 서비스 이용이 가능한 학과는 사범대학 교육학과, 문과대학 문헌정보학과, 예술대학 디자인학과, 사회과학대학 신문방송학과 입니다.</li>
+              <li>2. 서비스 이용을 원하시는 경우 학생 대표자를 통해 wns0415@gmail.com으로 문의주시면 감사하겠습니다.</li>
+              <li>3. 이 서비스는 성균관대학교의 중앙동아리 멋쟁이사자처럼과 함께합니다.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--footer-->
+      <div class = "footer">
+        <p>Copyright ⓒ 2016 SEOKHWANKANG All Rights Reserved<br>
+        Developed by LIKELION SKKU 4th TEAM PIESUN:)</p>
+      </div>
+  </body>
+</html>

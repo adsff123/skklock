@@ -1,0 +1,43 @@
+== README ==
+
+[개발일지 작성 규칙]
+1. 앞으로 프로젝트 진행을 위해 수정사항이 발생하는 경우 혹은 수정을 한 경우, 그 때마다 이 곳에 적어두면 나중에 유지보수 및 디버깅 시에 유용할 것 같으니 꼭 기록하기로 해요ㅎ
+2. 만약 이전의 개발일지에서 구현된 기능이 있다면 당일의 개발일지에 참조한 개발일지의 날짜를 기록해주세요.
+3. 날짜와 작성자 이름은 반드시 기록해주세요.
+
+<2016/12/29 목요일 박찬준>
+(구현한 것)
+1. 일단 처음 접속시에 연결되는 views/devise/sessions/new.html.erb 디자인, 서버 모두 완벽하게 구현.
+2. 관련된 css에 navbar, container, footer과 관련된 css 속성을 최초로 정의했고, 그 내용은 assets/stylesheets/sign_in.css 파일에서 확인가능.
+3. 다른 페이지에서도 이 세 가지 요소는 동일하게 유지되어야 함으로, 페이지를 추가로 생성할 시에 이 내용들은 위의 두 경로에서 html코드와 css코드를 복사해 이용(수정사항은 반드시 기록ㅠ).
+
+(구현해야 하는 것)
+1. views/devise/sessions/new.html.erb 우리가 사용할 운영자 아이디와 사물함 관리자가 사용할 관리자 아이디를 구분하는 기능은 추가되어야 함.
+2. Database creation => USERS / LOCK / DEPARTMENT / USAGE_INFORMATION 이상의 네 가지 TABLE
+3. Database initialization => 1) SOME USERS already have their LOCK. 2) ALL DEPARTEMENT already has own LOCK information ex.startposition,endnumposition,location,section etc...
+4. views/home/index.html.erb 하단에 기존사용자인지 or 신규사용자인지 구분하여 사용자 정보 출력.
+5. gridsystem의 달인 이상효 님께서 현재의 front를 반응형으로 바꿔주신다면 정말 I love you.
+
+(알아봐야 할 것)
+1. index.html 파일의 view와 관련된 것인데, 사물함 정면도와 안내도 각각을 어떻게 구현할 수 있을 지 조사가 필요함ㅠ
+2. 플젝이 중단되는 듯 하다 살아났으므로, 강석환 님에게 기존의 디자인을 사용해도 되는지 다시 한 번 확인해 문제시 되는 상황은 안 만들면 좋겠음.
+3. Ruby 문법으로 Data 전송을 구현하는 방법(기존에 Javascript로 하던 것).
+
+(기타)
+1. 사물함 관리자가 지정한 날짜에만 사물함 신청이 가능해야 하는데 이 점은 조금 더 개발이 진행된 이후에 생각해봐도 좋을듯.
+2. 회원 체계는 우리 멋사에서 운영자 아이디를 하나 가지고, 관리자 권한을 신청한 사용자에 한해 관리자 권한을 부여하면 될듯.
+
+
+<2016/12/31 토요일 아침 이상효>
+*확인 완료
+뚠뚠따레
+
+<2017/01/01 일요일 이상효 & 박찬준>
+
+
+<2017/02/01>
+찬준 : Lock db 수정및 정보 전달
+상효 : tab사용해서 보여주기
+
+
+

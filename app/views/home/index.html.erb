@@ -1,0 +1,194 @@
+<link rel="stylesheet" type='text/css' href="/assets/skklock.css"/>
+
+<div class='container'>
+  <div class = 'main'>
+    <!--로그인 된 사용자의 학과 사물함 신청 정보-->
+    <div class = 'header'>
+      <p>2017학년도 1학기 성균관대학교 <%= current_user.college %> <%= current_user.major %> 사물함 신청</p>
+    </div>
+    
+    <div class = "box_locker">
+      <div class = "box_table_container">
+        <table>
+          <tr>
+            <% @lock.each do |l| %>
+                <td>
+                  <form action = "/home/register" method = "POST">
+                    <input type = 'hidden' value = '<%= current_user.id %>' name = 'user_id' />
+                    <input type = 'hidden' value = '<%= l %>' name = 'number' />
+                    <button type = 'submit'/><%= l %></button>
+                  </form>
+                </td>
+            <% end %>
+          </tr>
+        </table>
+      </div>
+    </div>
+    
+    
+    
+    <!--배치 안내도 div-->
+    <div class = "box_info">
+      <div class = "box_info_content">
+        <p><%= current_user.major %> 사물함 배치 안내도</p>
+        <img src = "/assets/pedagogy.png" class = "img_info" width = "300">
+        <br>
+        <table class = "tbl_section nav nav-tabs">
+          <tr>
+            <a><td style="cursor:pointer">
+              <span style ="color:#44C794">A</span>구역
+            </td></a>
+            <a><td style="cursor:pointer">
+              <span style ="color:#44C794">B</span>구역
+            </td></a>
+            <a><td style="cursor:pointer">
+              <span style ="color:#44C794">C</span>구역
+            </td></a>
+            <a><td style="cursor:pointer">
+              <span style ="color:#44C794">D</span>구역
+            </td></a>
+          </tr>
+        </table>
+      </div>
+    </div>
+    
+    <!--사용자정보-->
+    
+    <div class = "tbl_user_info">
+      <table>
+        <tr>
+          <td class = 'tbl_user_info_content'>
+            성균관대학교
+          </td>
+          <td >
+            <b>이름</b>
+          </td>
+          <td class = 'tbl_user_info_content'>
+            <%= current_user.username %>
+          </td>
+          <td>
+            <b>학번</b>
+          </td>
+          <td class = 'tbl_user_info_content'>
+            <%= current_user.usernumber %>
+          </td>
+          <td>
+            <b>학과</b>
+          </td>
+          <td class = 'tbl_user_info_content'>
+            <%= current_user.major%>
+          </td>
+          <td>
+            <b>신청기한</b>
+          </td>
+          <td class = 'tbl_user_info_content'>
+            2017.03.03~2017.03.14
+          </td>
+        </tr>
+      </table>
+    </div>  
+  
+  
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $(".nav-tabs a").click(function(){
+        $(this).tab('show');
+    });
+});
+</script>
+
+<!--footer정보-->
+  <div class = "footer">
+    <p>Copyright ⓒ 2016 SEOKHWANKANG All Rights Reserved<br>
+    Developed by LIKELION SKKU 4th TEAM PIESUN:)</p>
+  </div>
+
+ <script>
+    var t1 = document.getElementById('lock1');
+    var t2 = document.getElementById('lock2');
+    var t3 = document.getElementById('lock3');
+    var t4 = document.getElementById('lock4');
+    function btn_listener(event){
+        switch(event.target.id){
+            case 'lock1':
+              alert(event.target.value);
+              break;
+            case 'lock2':
+              alert(event.target.value);
+              break;
+            case 'lock3':
+              alert(event.target.value+"번 사물함 신청완료"); 
+              // <%# current_user.lock_num %> = event.target.value;
+              break;
+            case 'lock4':
+              alert(event.target.value+"번 사물함 신청완료"); 
+              // <%# current_user.lock_num %> = event.target.value;
+              break;
+        }
+    }
+    t1.addEventListener('click', btn_listener);
+    t2.addEventListener('click', btn_listener);
+    t3.addEventListener('click', btn_listener);
+    t4.addEventListener('click', btn_listener);
+ </script>
+
+<!--<br>-->
+<!--<br>-->
+<!--<script>-->
+<!--        $(".locking").click(function(){-->
+<!--              lock_num = this.value;-->
+<!--              $.ajax({-->
+<!--                method: "POST",-->
+<!--                url: "/home/locknum"-->
+<!--                data: {locknums: lock_num}-->
+<!--              })-->
+<!--              .done(function( msg ) {-->
+<!--                alert("전송");-->
+<!--              })-->
+<!--        });-->
+<!--</script>-->
+
+
+<!--디브로뽑기-->
+      <!--<script>-->
+      <!--var k=1-->
+      <!--var a=1-->
+      <!--for (var y=1; y<=5; y++){-->
+      <!--  document.write('<div style=width:100% class=container>')-->
+      <!--   for( var x=1; x <= </%=@locks1.width %>; x++){-->
+           
+      <!--      document.write('<table class=table_box2>');-->
+      <!--      document.write('<tbody>')-->
+      <!--        for (var f=1; f <= </%= @locks1.height %>; f++){-->
+      <!--          if (k< </%= @locks1.startposition %>||k> </%= @locks1.endposition %>){-->
+      <!--            document.write('<tr>');-->
+      <!--            document.write('<td class=cannottake>');-->
+      <!--            document.write ((''));-->
+      <!--            document.write ('</td>');-->
+      <!--            k++;-->
+      <!--            document.write ('</tr>');-->
+      <!--          }-->
+      <!--          else{-->
+      <!--            document.write('<tr>');-->
+      <!--            document.write('<td class=cantake>');-->
+      <!--            document.write('<button class=locking style=cursor:pointer id="samulham_no_'+ a +'">');-->
+      <!--            document.write ((a));-->
+      <!--            document.write('</button>');-->
+      <!--            document.write ('</td>');-->
+      <!--            k++;-->
+      <!--            a++;-->
+      <!--            document.write ('</tr>');-->
+      <!--          }-->
+      <!--      }-->
+      <!--    document.write('</tbody>');-->
+      <!--    document.write('</table>');-->
+      <!--   }-->
+      <!--   document.write('</div>');-->
+      <!--   document.write('<hr>');-->
+      <!--}-->
+
+      <!--</script>-->
+    <!--디브뽑기끝-->
